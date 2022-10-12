@@ -1,0 +1,107 @@
+<!--generic style-->
+{%extends "layout.html" %}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+	<div class ="col-md-8 offset-md-2">
+		<div class ="content-section">
+			<div class="media">
+				<img class ="rounded-circle account-img " src="{{image_file}}">
+				<div class="media-body">
+					<h2 class = "account-heading">{{current_user.username}}</h2>
+					<p class="text-secondary">{{current_user.email}}</p>
+					<button class = "btn-secondary"onclick="editAccount()">Edit Account</button>
+				</div>
+			</div>
+		</div>
+		<div id ="accountInfo" class="content-section" style="display:none" >
+			<form method="post" action="" enctype="multipart/form-data">
+				{{form.hidden_tag()}}
+				<fieldset class = "form-group">
+					<legend class = "border-bottom">Account Info</legend>
+					<div class="form-group mb-2">
+						{{form.username.label(class="form-control-label")}}
+						
+						{%if form.username.errors%}
+							{{form.username(class="form-control form-control-lg is-invalid")}}
+							<div class= "invalid-feedback">
+								{%for error in form.username.errors%}
+									<span> {{error}}</span>
+								{%endfor%}	
+							</div>				
+						{%else%}
+							{{form.username(class="form-control form-control-lg")}}
+						{% endif %}
+					</div>
+					
+					<div class="form-group mb-2">
+						{{form.email.label(class="form-control-label")}}
+						
+						{%if form.email.errors%}
+							{{form.email(class="form-control form-control-lg is-invalid")}}
+							<div class= "invalid-feedback">
+								{%for error in form.email.errors%}
+									<span> {{error}}</span>
+								{%endfor%}
+							</div>	
+						{%else%}
+							{{form.email(class="form-control form-control-lg")}}					
+						{%endif%}
+						</div>
+						
+					<div class="form-group mb-2">
+						{{form.picture.label()}}
+						{{form.picture(class ="form-control-file",onchange ="loadFile(event)", onClick ="removeFile()")}}
+						<br>
+						<img class = "rounded-circle account-img" id="output" width="125", height="125" src="{{image_file}}" />
+						<br>
+						<p id ="outputtext"> Your profile picture </p>
+						<br>
+						
+						
+						{% if form.picture.errors %}
+							{%for error in form.picture.errors%}
+									<span id ="picErrors" class="text-danger"> {{error}}</span> <br>
+							{%endfor%}
+						{%endif%}		
+					</div>
+										
+				</fieldset>
+				<div class="form-group">
+					{{form.submit(class="btn btn-outline-info")}}
+				</div>
+			</form>
+		</div>
+		
+	</div>
+	
+	<script>
+	var loadFile = function(event) {
+		var image = document.getElementById('output');
+		image.style.display='inline';
+		image.src = URL.createObjectURL(event.target.files[0]);
+		var text = document.getElementById('outputtext');
+		text.style.display='inline'
+		text.innerHTML = "Looks good? If not, upload another one!";
+		
+	};
+	var removeFile = function(event) {
+		document.getElementById('output').src="{{image_file}}";
+		document.getElementById('outputtext').innerHTML ='Your profile picture';
+		document.getElementById('picErrors').style.display='none';
+
+	};
+	
+	function editAccount(){
+		var elem = document.getElementById("accountInfo")
+		if (elem.style.display == "none"){
+			elem.style.display = "block";
+		}else{
+			elem.style.display = "none";
+		}
+	}
+	
+	</script>
+{%endblock bodyContent%}
+	
+	

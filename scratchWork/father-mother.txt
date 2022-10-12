@@ -1,0 +1,22 @@
+class Father(db.Model,UserMixin):
+    id = db.Column(db.Integer,primary_key=True)
+    name_first = db.Column(db.String(60), nullable=False)
+    name_last = db.Column(db.String(60), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+    def __repr__(self):
+        return f"User('{name_first}', '{name_last}')"
+               
+class Mother(db.Model,UserMixin):
+    id = db.Column(db.Integer,primary_key=True)
+    name_first = db.Column(db.String(60), nullable=False)
+    name_last = db.Column(db.String(60), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+    def __repr__(self):
+        return f"User('{name_first}', '{name_last}')"
+         
+
+GETTING GRANPA		 
+	   fatherUser = User.query.filter(User.name_first==father.name_first).filter(User.name_last==father.name_last).first();
+        grandfather =  Father.query.filter(fatherUser.id==Father.user_id).first()

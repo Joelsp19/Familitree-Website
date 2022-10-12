@@ -1,0 +1,116 @@
+<!--generic style-->
+{%extends "layout.html" %}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+		
+	
+	<div class="aboutSection">
+		<section class="title">
+		<div>
+			<h1>ABOUT</h1>
+		
+		</div>
+		</section>
+
+
+		<section class="description">
+			<div class="content-block-left">
+			<h2>Why use FAMILITREE?</h2>
+			<h4>Have you ever had that uncle with a funny accent call, but you can't remember his name? Or a birthday of a distant cousin that you forgot? Or do you just want to connect to your family more? Well, your problems are solved with <span class= "font-weight-bold">FAMILITREE</span>, a website that helps you create and organize your family tree. With this tool by your side, no more gaps between your family members.
+			</h4>
+			</div>
+		</section>
+	</div>
+
+	<section>
+			<svg xmlns="http://www.w3.org/2000/svg">
+				<g class="logo">
+					<rect x="100" y="90" width="10" height="35" style="fill:black" />
+					<polyline  points="75,100 105,70 135,100 75,100" style="fill:black;"/>
+					<polyline  points="80,85 105,50 130,85 80,85" style="fill:black;"/>				
+					<polyline  points="87,65 105,45 123,65 87,65" style="fill:black;" "/>
+					<line x1="80" y1="125" x2="130" y2="125" style="stroke:black; stroke-width:3"/>
+					<text x="45" y="145" font-family="Poller One">FAMILI</text>
+					<text x="115" y="145" style="fill:green;" font-family="Poller One">TREE</text
+				</g>
+			</svg>
+			
+			<svg  viewbox="0 0 300 300"xmlns="http://www.w3.org/2000/svg">
+				
+				<g transform="scale(1)">
+
+
+
+
+				<g class="logo" ">
+				<path d="M0 300 
+					C 60 290 70 140 125 110
+					C 170 80 180 130 200 100 
+					L 192 140
+					C 140 100 105 200 125 200
+					C 150 200 150 200 160 190
+					L 154 220
+					C 70 220 120 310 115 300
+					C 90 260 30 300 0 300"/>
+				</g>
+
+				<g class="leaves">
+					
+
+					<path d=" M 90 120
+							L 100 120 L 105 130 L 70 90 L 80 91 L 140 70 L 130 72 L 120 68 L 95 78 L 105 82 L 98 56 L 103 89 L 75 112 L 83 106
+							L 100 34 L 107 45 L 87 79 L 78 104 L 74 80 L 85 130 L 90 45 L 92 112 L 80 120 L 83 112" style="fill:none; stroke:black; stroke-width:3;"/>
+
+				
+				</g>
+				
+				
+				</g>
+			</svg>
+			
+		</section>
+	
+
+	<style>
+
+	.logo{
+		pointer-events: bounding-box;
+	}
+
+	.logo:hover{
+		opacity:0.8;
+		fill:brown;
+	}
+
+	.leaves{
+		visibility:hidden;
+	}
+
+	.logo:hover + .leaves{
+		visibility:visible;
+	}
+
+	
+
+	.aboutSection{
+		position:relative;
+		width:1000px;
+		height:500px;
+		border: 3px solid red;
+	}
+
+	.title{
+		position:absolute;
+		left:100px;
+		top:50px;
+		text-align: center;
+	}
+
+	.description{
+		position:absolute;
+		top:100px;
+		left:100px
+	}
+	<style>
+{%endblock bodyContent%}

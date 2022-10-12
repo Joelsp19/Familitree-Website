@@ -1,0 +1,69 @@
+<!--generic style-->
+{%extends "layout.html" %}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+	<div>
+		<h1>add relationship</h1>
+	</div>
+	<div class="content-section">
+		<form method="post" action="">
+		<fieldset class = "form-group" action="">
+			<legend class = "border-bottom">{{name}}</legend>
+				{{form.hidden_tag()}}
+
+				<div class="form-group mb-2">
+					{{form.user_one_id.label(id="Lname", class="form-control-label")}}
+					
+					{%if form.user_one_id.errors%}
+						{{form.user_one_id(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.user_one_id.errors%}
+								<span> {{error}}</span>
+							{%endfor%}	
+						</div>				
+					{%else%}
+						{{form.user_one_id(class="form-control form-control-lg")}}					
+					{% endif %}
+				</div>
+				
+			
+				<div class="form-group mb-2">
+					{{form.user_two_id.label(id="Lname", class="form-control-label")}}
+					{%if form.user_two_id.errors%}
+						{{form.user_two_id(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.user_two_id.errors%}
+								<span> {{error}}</span>
+							{%endfor%}	
+						</div>				
+					{%else%}
+						{{form.user_two_id(class="form-control form-control-lg")}}					
+					{% endif %}
+				</div>	
+				
+				{%if userOneName%}
+					<h1> {{userOneName}}</h1>
+				{%endif%}
+				
+				<div class="form-group mb-2">
+					{{form.relationship_type.label(id="Lname", class="form-control-label")}}
+					{%if form.relationship_type.errors%}
+						{{form.relationship_type(class="form-control form-control-lg is-invalid")}}
+						<div class= "invalid-feedback">
+							{%for error in form.relationship_type.errors%}
+								<span> {{error}}</span>
+							{%endfor%}	
+						</div>				
+					{%else%}
+						{{form.relationship_type(class="form-control form-control-lg")}}					
+					{% endif %}
+				</div>	
+			</legend>
+		</fieldset>
+		<div class="form-group">	
+			{{form.submit(class="btn btn-outline-info")}}
+		</div>
+		</form>
+	</div>
+{%endblock bodyContent%}

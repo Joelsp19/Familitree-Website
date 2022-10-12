@@ -1,0 +1,43 @@
+<!--generic style-->
+{%extends "layout.html" %}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+	<div>
+		{%if legend == "Get started"%}
+			<h1> Get started </h1>
+			<a href="{{url_for('familyYourName')}}">Click here to get started</a>
+		{%else%}
+			<div class="content-section ml-5">
+					<p><h3>PRIMARY family</h3>
+					  <ul class="list-group">
+						<li class="list-group-item list-group-item-light">You: {{current_user.name_first}}  {{current_user.name_last}}</li>
+						{%if father.father_user_id%}
+						<li class="list-group-item list-group-item-light"><a href="#"> Father: {{father.name_first}} {{father.name_last}}</a></li>
+						{%else%}
+						<li class="list-group-item list-group-item-light"> Father: {{father.name_first}} {{father.name_last}}</li>
+						{%endif%}
+						{%if mother.mother_user_id%}
+						<li class="list-group-item list-group-item-light"><a href="#">Mother: {{mother.name_first}} {{mother.name_last}}</a></li>
+						{%else%}
+						<li class="list-group-item list-group-item-light">Mother: {{mother.name_first}} {{mother.name_last}}</li>
+						{%endif%} 
+						{%if kid%}
+						{%for i in kid%}
+							{%if i.kid_user_id%}
+							<li class="list-group-item list-group-item-light"><a href="#">Kid: {{i.name_first}} {{i.name_last}}</a></li>
+							{%else%}
+							<li class="list-group-item list-group-item-light">Kid: {{i.name_first}} {{i.name_last}}</li>
+							{%endif%}
+						{%endfor%}
+						{%endif%}
+					 </ul>
+				</p>
+	
+				<br>
+				<a class= "btn btn-primary btn-sm " href="{{url_for('familyYourName')}}">Update your Family</a>
+			</div>
+		{%endif%}
+		
+	</div>
+{%endblock bodyContent%}

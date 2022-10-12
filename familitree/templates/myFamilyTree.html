@@ -1,0 +1,36 @@
+<!--generic style-->
+{%extends "layout.html" %}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+	<div class="col-3 offset-1 content-section">
+		<h1>My Family Tree</h1>
+		
+		<a class="btn btn-secondary" href="{{url_for('addPeople')}}">Add person</a>
+		<a class="btn btn-secondary" href="{{url_for('addRelationships')}}">Add relationship</a>
+		<a class="btn btn-primary" href ="{{url_for('drawFamilyTree', id=1)}}">draw tree</a>
+		<br><br>	
+		<p><h3>Members</h3>
+		  <ul class="list-group">
+			{%for i in person%}	
+				<li class="list-group-item list-group-item-light"><a href ="{{url_for('updatePeople', id=i.id)}}">{{i.id}}: {{i.name_first}} {{i.name_last}} </a> </li>
+			{%endfor%}
+			{%for i in relationship%}	
+				<li class="list-group-item list-group-item-light"><a href ="{{url_for('updateRelationship', id=i.id)}}">
+					{%for j in person%}
+					{%if j.id==i.user_two_id%}
+					{{j.name_first}} {{j.name_last}} is a {{i.relationship_type}} of 
+					{%endif%}
+					{%endfor%}
+					{%for k in person%}
+					{%if k.id==i.user_one_id%}
+					{{k.name_first}} {{k.name_last}}
+					{%endif%}
+					{%endfor%}
+				</a> </li>
+			{%endfor%}
+			</ul>
+		</p>
+	</div>
+{%endblock bodyContent%}
+

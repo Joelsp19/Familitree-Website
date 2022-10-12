@@ -1,0 +1,7 @@
+
+SOURCES
+s3schools
+https://www.youtube.com/watch?v=QnDWIZuWYW0&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=2
+
+https://css-tricks.com/snippets/css/typewriter-effect/
+https://codetheweb.blog/2017/12/07/fullscreen-image-hero/

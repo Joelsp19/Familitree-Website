@@ -1,0 +1,58 @@
+<!--generic style-->
+{%extends "layout.html" %}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+	
+	
+	<div class="content-section">
+	<div class ="center text-center">
+		<h5>{{cp.name_first}} {{cp.name_last}}</h5>
+	</div>
+	</div>
+	
+	{%for i in cpr%}	
+		<div class="content-section">
+			{%if i.relationship_type=="father" or i.relationship_type=="mother"%}
+				<div class="topPosition">
+					<h5>{{person[i.user_two_id-1].name_first}}</h5>
+				</div>
+			{%elif i.relationship_type =="sibling"%}
+				<div class="center">
+					<h5>{{person[i.user_two_id-1].name_first}}</h5>
+
+				</div>			
+			{%elif i.relationship_type == "kid"%}
+				<div class="botPosition">
+					<h5>{{person[i.user_two_id-1].name_first}}</h5>
+
+				</div>
+			{%endif%}
+		</div>
+	{%endfor%}
+	
+	<style>
+	div.center{
+		position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+	}
+	div.topPosition{
+		position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-25%, -50%)
+	}
+	div.botPosition{
+		position: fixed;
+		top: 200;
+		right: 100;
+	}
+	
+	</style>
+	
+	
+	
+{%endblock bodyContent%}

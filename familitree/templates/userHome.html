@@ -1,0 +1,64 @@
+<!--generic style-->
+
+{%extends "layout.html"%}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+				
+				<div class="col-md-5 offset-1 mr-5  ">
+					<div class="content-section">
+						<h1>USERHOME</h1>
+					</div>
+				</div>
+				
+				<div class ="col-md-4" >
+					<div class ="content-section">
+						<div class="media" >
+							<img class ="rounded-circle account-img ml-5" src="{{image_file}}">
+							<div class="media-body mt-4">
+								<h2 class = "account-heading">{{current_user.username}}</h2>
+								<p class="text-secondary">{{current_user.email}}</p>
+							</div>
+						</div>
+				
+					<hr>
+					<h3>Our Sidebar</h3>
+					<p class='text-muted'>You can put any information here you'd like.
+					  <ul class="list-group">
+						<li class="list-group-item list-group-item-light">Latest Posts</li>
+						<li class="list-group-item list-group-item-light">Announcements</li>
+						<li class="list-group-item list-group-item-light">Calendars</li>
+						<li class="list-group-item list-group-item-light">etc</li>
+					  </ul>
+					</p>
+				  </div>
+				</div>
+				
+				
+			
+						
+				
+			
+				
+		
+		<script>
+			/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+			function openNav() {
+				if(document.getElementById("mySidebar").style.width == "0px"){
+					document.getElementById("mySidebar").style.width = "250px";
+					document.getElementById("main").style.marginLeft = "250px";
+				}else{
+					document.getElementById("mySidebar").style.width = "0";
+					document.getElementById("main").style.marginLeft = "0";
+				}
+			
+			}
+
+			/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+			function closeNav() {
+			  document.getElementById("mySidebar").style.width = "0";
+			  document.getElementById("main").style.marginLeft = "0";
+			}
+		</script>
+		
+{%endblock bodyContent%}

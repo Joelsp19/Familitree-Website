@@ -1,0 +1,75 @@
+<!--generic style-->
+{%extends "layout.html" %}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+	
+	<div class="col-md-4 offset-md-2 content-section">
+	<form method="post" action="">
+		{{form.hidden_tag()}}
+		<fieldset class = "form-group">
+			<legend class = "border-bottom">Create your Family</legend>
+			
+			<div class="form-group mb-2">
+				{{form.name_first.label(id="Fname",class="form-control-label")}}
+				{%if form.name_first.errors%}
+					{{form.name_first(class="form-control form-control-lg is-invalid")}}
+					<div class= "invalid-feedback">
+						{%for error in form.name_first.errors%}
+							<span> {{error}}</span>
+						{%endfor%}	
+					</div>				
+				{%else%}
+					{{form.name_first(class="form-control form-control-lg")}}					
+				{% endif %}
+			</div>
+				
+			<div class="form-group mb-2">
+				{{form.name_last.label(id="Lname", class="form-control-label")}}
+				{%if form.name_last.errors%}
+					{{form.name_last(class="form-control form-control-lg is-invalid")}}
+					<div class= "invalid-feedback">
+						{%for error in form.name_last.errors%}
+							<span> {{error}}</span>
+						{%endfor%}	
+					</div>				
+				{%else%}
+					{{form.name_last(class="form-control form-control-lg")}}					
+				{% endif %}
+			</div>
+			
+		
+		
+			
+		{%if name.find('Kid')>=0%}
+			<div class="form-check">
+				{{form.addKid(class="form-check-input")}}
+				{{form.addKid.label(class="form-check-label")}}
+			</div>
+			<div class="form-check">
+				{{form.deleteKid(class="form-check-input")}}
+				{{form.deleteKid.label(class="form-check-label")}}
+			</div>
+			<div class="form-check">
+				{{form.noKid(class="form-check-input")}}
+				{{form.noKid.label(class="form-check-label")}}
+			</div>
+		
+		{%endif%}
+		
+		</fieldset>
+		<div class="form-group">	
+			{{form.submit(class="btn btn-outline-info")}}
+
+		</div>
+	</div>
+	
+	<script>
+		var name="{{name}}"
+
+		document.getElementById('Fname').innerHTML = name + " First Name";
+		document.getElementById('Lname').innerHTML = name + " Last Name";
+	</script>
+	
+	
+{%endblock bodyContent%}

@@ -1,0 +1,30 @@
+<!--generic style-->
+{%extends "layout.html" %}
+
+<!-- webpage specific-->
+{%block bodyContent%}
+	<div class="container-fluid">
+		<h1>is this you?</h1>
+		<div class ="content-section">
+			<div class="media">
+				<img class ="rounded-circle account-img " src="{{url_for('static', filename='profile_pics/' + possibleParent.image_file)}}">
+				<div class="media-body">
+					<h2 class = "account-heading">{{possibleParent.username}}</h2>
+					<p class="text-secondary">{{possibleParent.email}}</p>
+				</div>
+			</div>
+		</div>
+		
+		<form method="post" action="">
+		{{form.hidden_tag()}}
+		<div class="form-check">
+				{{form.checkbox(class="form-check-input")}}
+				{{form.checkbox.label(class="form-check-label")}}
+			</div>
+		
+		<div class="form-group">
+			{{form.submit(class="btn btn-outline-info")}}
+		</div>
+		</form>
+	</div>
+{%endblock bodyContent%}
